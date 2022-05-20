@@ -1,6 +1,4 @@
-<div class="dos__loader">
-  
-</div>
+<div class="dos__loader"></div>
 
 <div class="dos__page row">
   
@@ -113,6 +111,61 @@
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
             <input type="button" name="test" class="button button-primary dos__test__connection"
                    value="<?php _e('Check the connection', 'dos'); ?>" />
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h4>
+            <?php _e('Migrate existing media', 'dos'); ?>
+          </h4>
+        </div>
+
+      </div>
+
+      <div class="dos__block">
+
+        <div class="row">
+          
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
+            <label>
+              <?php _e('Progress', 'dos'); ?>:
+            </label>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
+            <div class="dos__progress"><div class="dos__progress_bar"></div></div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
+            <label>
+              <?php _e( 'Status', 'dos' ); ?>:
+            </label>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
+            <div class="dos__migrate_status">
+              <span class="count"><?php echo intval( $attachment_ids_total ); ?> mediafiles can be migrated</span>&nbsp;
+              <span class="text"></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">
+            <input type="hidden" name="n" class="dos__n" value="<?php echo wp_create_nonce( 'dos_migrate' ); ?>" />
+            <input type="button" name="migrate" class="button button-primary dos__migrate"
+                   value="<?php _e( 'Start migration', 'dos' ); ?>" />
           </div>
 
         </div>

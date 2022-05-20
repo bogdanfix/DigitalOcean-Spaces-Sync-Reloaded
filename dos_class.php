@@ -60,15 +60,16 @@ class DOS {
   // REGISTRATIONS
   private function register_actions () {
 
-    add_action('admin_menu', array($this, 'register_menu') );
-    add_action('admin_init', array($this, 'register_settings' ) );
-    add_action('admin_enqueue_scripts', array($this, 'register_scripts' ) );
-    add_action('admin_enqueue_scripts', array($this, 'register_styles' ) );
+    add_action( 'admin_menu', array( $this, 'register_menu') );
+    add_action( 'admin_init', array( $this, 'register_settings' ) );
+    add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ) );
+    add_action( 'admin_enqueue_scripts', array( $this, 'register_styles' ) );
 
-    add_action('wp_ajax_dos_test_connection', array($this, 'test_connection' ) );
+    add_action( 'wp_ajax_dos_test_connection', array( $this, 'test_connection' ) );
+    add_action( 'wp_ajax_dos_migrate', array( $this, 'migrate' ) );
 
-    add_action('add_attachment', array($this, 'action_add_attachment' ), 10, 1);
-    add_action('delete_attachment', array($this, 'action_delete_attachment' ), 10, 1);
+    add_action( 'add_attachment', array( $this, 'action_add_attachment' ), 10, 1);
+    add_action( 'delete_attachment', array( $this, 'action_delete_attachment' ), 10, 1);
 
   }
 
@@ -112,6 +113,9 @@ class DOS {
   }
 
   public function register_setting_page () {
+
+    $attachment_ids_total = count( $this->get_attachment_ids() );
+
     include_once('dos_settings_page.php');
   }
 
@@ -130,46 +134,7 @@ class DOS {
   // FILTERS
   public function filter_wp_generate_attachment_metadata ($metadata) {
 
-    $paths = array();
-    $upload_dir = wp_upload_dir();
-
-    // collect original file path
-    if ( isset($metadata['file']) ) {
-
-      $path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . $metadata['file'];
-      array_push($paths, $path);
-
-      // set basepath for other sizes
-      $file_info = pathinfo($path);
-      $basepath = isset($file_info['extension'])
-          ? str_replace($file_info['filename'] . "." . $file_info['extension'], "", $path)
-          : $path;
-
-    }
-
-    // collect size files path
-    if ( isset($metadata['sizes']) ) {
-
-      foreach ( $metadata['sizes'] as $size ) {
-
-        if ( isset($size['file']) ) {
-
-          $path = $basepath . $size['file'];
-          array_push($paths, $path);
-
-        }
-
-      }
-
-    }
-
-    // process paths
-    foreach ($paths as $filepath) {
-
-      // upload file
-      $this->file_upload($filepath, 0, true);
-
-    }
+    $this->media_all_sizes_upload( $metadata );
 
     return $metadata;
 
@@ -241,15 +206,20 @@ class DOS {
   // ACTIONS
   public function action_add_attachment ($postID) {
 
+    $result = false;
+
     if ( wp_attachment_is_image($postID) == false ) {
   
       $file = get_attached_file($postID);
   
-      $this->file_upload($file);
-  
+      if( $this->file_upload($file) )
+      {
+        $result = true;
+      }
+
     }
   
-    return true;
+    return $result;
 
   }
 
@@ -343,6 +313,73 @@ class DOS {
 
   }
 
+  public function get_attachment_ids () {
+
+    $attachment_ids = get_posts( array(
+      'post_type' => 'attachment',
+      'posts_per_page' => -1,
+      'meta_query' => array(
+        array(
+          'key'     => 'dos_migrated',
+          'compare' => 'NOT EXISTS',
+        )
+      ),
+      'fields' => 'ids',
+    ) );
+
+    return $attachment_ids;
+  }
+
+  public function migrate () {
+
+    $response = array(
+      'result' => 'error',
+      'response' => '',
+    );
+
+    check_ajax_referer( 'dos_migrate' );
+
+    if ( !empty( $_POST['step'] ) && !empty( $_POST['id'] ) ) {
+
+      // get all attachment ids
+
+      if( $_POST['step'] === '1' ) {
+
+        $attachment_ids = $this->get_attachment_ids();
+
+        $response['result'] = 'success';
+        $response['response'] = $attachment_ids;
+
+      // migrate one attachment at a time
+
+      } elseif( $_POST['step'] === '2' ) {
+
+        $attachment_id = intval( $_POST['id'] );
+
+        $metadata = wp_get_attachment_metadata( $attachment_id );
+          
+        if( $this->media_all_sizes_upload( $metadata ) )
+        {
+          $response['result'] = 'success';
+          $response['response'] = 'migrated_fully';
+
+          // update status
+
+          update_post_meta( $attachment_id, 'dos_migrated', $response['response'] );
+        }
+        else
+        {
+          // $this->show_message( __('Connection is not established.','dos') . ' : ' . $e->getMessage() . ($e->getCode() == 0 ? '' : ' - ' . $e->getCode() ), true);
+
+          $response['result'] = 'error';
+          $response['response'] = 'failed';
+        }
+      }
+    }
+
+    wp_send_json( $response, 200 );
+  }
+
   public function show_message ($message, $errormsg = false) {
 
     if ($errormsg) {
@@ -357,6 +394,56 @@ class DOS {
   
     echo "<p><strong>$message</strong></p></div>";
   
+  }
+
+  public function media_all_sizes_upload( $metadata ) {
+
+    $result = true;
+
+    $paths = array();
+    $upload_dir = wp_upload_dir();
+
+    // collect original file path
+    if ( isset($metadata['file']) ) {
+
+      $path = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . $metadata['file'];
+      array_push($paths, $path);
+
+      // set basepath for other sizes
+      $file_info = pathinfo($path);
+      $basepath = isset($file_info['extension'])
+          ? str_replace($file_info['filename'] . "." . $file_info['extension'], "", $path)
+          : $path;
+
+    }
+
+    // collect size files path
+    if ( isset($metadata['sizes']) ) {
+
+      foreach ( $metadata['sizes'] as $size ) {
+
+        if ( isset($size['file']) ) {
+
+          $path = $basepath . $size['file'];
+          array_push($paths, $path);
+
+        }
+
+      }
+
+    }
+
+    // process paths
+    foreach ($paths as $filepath) {
+
+      if( ! $this->file_upload( $filepath ) )
+      {
+        $result = false;
+      }
+
+    }
+
+    return $result;
   }
 
   // FILE METHODS
@@ -404,6 +491,8 @@ class DOS {
       return true;
 
     } catch (Exception $e) {
+
+      error_log( $e );
 
       return false;
 

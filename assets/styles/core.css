@@ -61,3 +61,15 @@
 #message {
   margin: 0;
 }
+
+.dos__page .dos__progress {
+  width: 100%;
+  background: #D2D2D2;
+  padding: 2px;
+}
+
+.dos__page .dos__progress .dos__progress_bar {
+  height: 20px;
+  width: 0%;
+  background: #0080FF;
+}

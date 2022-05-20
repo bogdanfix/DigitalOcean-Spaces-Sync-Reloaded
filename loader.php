@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: DigitalOcean Spaces Sync
- * Plugin URI: https://github.com/keeross/DO-Spaces-Wordpress-Sync
+ * Plugin Name: DigitalOcean Spaces Sync Reloaded
+ * Plugin URI: https://github.com/bogdanfix/DigitalOcean-Spaces-Sync-Reloaded
  * Description: This WordPress plugin syncs your media library with DigitalOcean Spaces Container.
  * Version: 2.2.1
- * Author: keeross
- * Author URI: https://github.com/keeross
+ * Author: BogdanFix, keeross
+ * Author URI: https://github.com/bogdanfix
  * License: MIT
  * Text Domain: dos
  * Domain Path: /languages
