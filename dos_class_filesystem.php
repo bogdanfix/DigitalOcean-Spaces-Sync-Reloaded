@@ -8,8 +8,8 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPA
 
 class DOS_Filesystem {
 
-  public static function get_instance ( $key, $secret, $container, $endpoint ) {
-
+  public static function get_instance( $key, $secret, $container, $endpoint )
+  {
     $client = S3Client::factory([
       'credentials' => [
         'key'    => $key,
@@ -18,15 +18,14 @@ class DOS_Filesystem {
       'bucket' => 'do-spaces',
       'endpoint' => $endpoint, 
       'version' => 'latest',
+
       // region means nothing for DO Spaces, but aws client may drop and error without it
       'region' => 'us-east-1',
     ]);
   
-    $connection = new AwsS3Adapter($client, $container);
-    $filesystem = new Filesystem($connection);
+    $connection = new AwsS3Adapter( $client, $container );
+    $filesystem = new Filesystem( $connection );
   
     return $filesystem;
-
   }
-
 }

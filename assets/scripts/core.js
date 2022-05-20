@@ -11,6 +11,7 @@ const dos_n = jQuery('.dos__n')
 jQuery( function () {
 
   // check connection button
+
   dos_test_connection.on( 'click', function () {
 
     console.log( 'Testing connection to DigitalOcean Spaces Container' )
@@ -31,12 +32,12 @@ jQuery( function () {
       data: data,
       dataType: 'html'
     }).done( function ( result ) {
-      dos_message.show()
-      dos_message.html( '<br/>' + result )
-      dos_loader.hide()
-      jQuery('html,body').animate({ scrollTop: 0 }, 1000)
-    })
 
+      dos_message.show();
+      dos_message.html( '<br/>' + result );
+      dos_loader.hide();
+      jQuery('html,body').animate({ scrollTop: 0 }, 1000);
+    })
   });
 
   var attachment_ids = [];
@@ -45,6 +46,7 @@ jQuery( function () {
   var retry_counter = 0;
 
   // start migration button
+
   dos_migrate.on( 'click', function () {
 
     console.log( 'Start migration to DigitalOcean Spaces Container' );
@@ -183,7 +185,5 @@ jQuery( function () {
         dos_migrate.prop( 'disabled', false ).text( 'Start migration' );
       }
     }
-
   });
-
 })
