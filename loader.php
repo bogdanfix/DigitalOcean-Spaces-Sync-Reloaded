@@ -3,13 +3,12 @@
  * Plugin Name: DigitalOcean Spaces Sync Reloaded
  * Plugin URI: https://github.com/bogdanfix/DigitalOcean-Spaces-Sync-Reloaded
  * Description: This WordPress plugin syncs your media library with DigitalOcean Spaces Container.
- * Version: 2.2.1
+ * Version: 2.3.0
  * Author: BogdanFix, keeross
  * Author URI: https://github.com/bogdanfix
  * License: MIT
  * Text Domain: dos
  * Domain Path: /languages
-
  */
 
 require_once ABSPATH . DIRECTORY_SEPARATOR . 'wp-admin' . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'file.php';

@@ -18,7 +18,7 @@
       
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <?php _e('Type in your DigitalOcean Spaces container access information.', 'dos'); ?>
-        <?php _e('Don\'t have an account? <a href="https://goo.gl/SX2UwH">Create it</a>', 'dos'); ?>
+        <?php _e('Don\'t have an account? <a href="https://bit.ly/digital-ocean-spaces">Create it</a>', 'dos'); ?>
       </div>
 
     </div>

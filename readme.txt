@@ -1,9 +1,9 @@
 === Plugin Name ===
-Contributors: keeross
-Donate link: https://www.paypal.me/keeross
+Contributors: BogdanFix, keeross
+Donate link: https://www.paypal.me/bogdanfix
 Tags: digitalocean, spaces, cloud, storage, object, s3
 Requires at least: 4.6
-Tested up to: 5.3.2
+Tested up to: 5.9.3
 Stable tag: 2.2.1
 License: MIT
 License URI: https://opensource.org/licenses/MIT
