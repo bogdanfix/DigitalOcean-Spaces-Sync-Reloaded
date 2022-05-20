@@ -1,8 +1,10 @@
-## DigitalOcean Spaces Sync
+## DigitalOcean Spaces Sync Reloaded
 This WordPress plugin syncs your media library with [DigitalOcean Spaces](https://bit.ly/digital-ocean-spaces) Container.
 
 ### Description
 This WordPress plugin syncs your media library with [DigitalOcean Spaces](https://bit.ly/digital-ocean-spaces) Container. It allows you to simuntanously upload and delete files, replacing public media URL with relative cloud storage links. You can choose between two options, to keep local copy of the files, or to delete them and keep files only in cloud storage.
+
+Now this plugin can also sync all existing images in your Wordpress media library to DigitalOcean Spaces retroactively with new "migrate existing media" feature.
 
 In order to use this plugin, you have to create a DigitalOcean Spaces API key.
 
