@@ -1,188 +1,190 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: DigitalOcean Spaces Sync Reloaded\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-23 21:34+0000\n"
+"POT-Creation-Date: 2022-12-16 17:32+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
+"Language-Team: BogdanFix\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: loader.php\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPath-2: dos_class.php\n"
+"X-Poedit-SearchPath-3: dos_settings_page.php\n"
+"X-Poedit-SearchPath-4: dos_class_filesystem.php\n"
 
-#: loader.php:27
-msgid ""
-"Plugin DigitalOcean Spaces Sync requires PHP 5.3.3 or higher. The plugin has "
-"now disabled itself."
-msgstr ""
-
-#: loader.php:39
-msgid ""
-"Plugin DigitalOcean Spaces Sync requires cURL 7.16.2+. The plugin has now "
-"disabled itself."
-msgstr ""
-
-#: loader.php:45
-msgid ""
-"Plugin DigitalOcean Spaces Sync requires that cURL is compiled with OpenSSL. "
-"The plugin has now disabled itself."
-msgstr ""
-
-#: code.php:144
+#: dos_class.php:334
 msgid "Connection is successfully established. Save the settings."
 msgstr ""
 
-#: code.php:150
+#: dos_class.php:340
 msgid "Connection is not established."
 msgstr ""
 
-#: code/settings_page.php:14
+#: dos_settings_page.php:12
 msgid "Settings"
 msgstr ""
 
-#: code/settings_page.php:22
+#: dos_settings_page.php:20
 msgid "Type in your DigitalOcean Spaces container access information."
 msgstr ""
 
-#: code/settings_page.php:23
-msgid "Don't have an account? <a href=\"https://goo.gl/SX2UwH\">Create it</a>"
+#: dos_settings_page.php:21
+msgid ""
+"Don't have an account? <a href=\"https://bit.ly/digital-ocean-spaces"
+"\">Create it</a>"
 msgstr ""
 
-#: code/settings_page.php:36
+#: dos_settings_page.php:34
 msgid "Connection settings"
 msgstr ""
 
-#: code/settings_page.php:48
+#: dos_settings_page.php:46
 msgid "DO Spaces Key"
 msgstr ""
 
-#: code/settings_page.php:64
+#: dos_settings_page.php:62
 msgid "DO Spaces Secret"
 msgstr ""
 
-#: code/settings_page.php:80
+#: dos_settings_page.php:78
 msgid "DO Spaces Container"
 msgstr ""
 
-#: code/settings_page.php:96
+#: dos_settings_page.php:94
 msgid "Endpoint"
 msgstr ""
 
-#: code/settings_page.php:104
+#: dos_settings_page.php:103
 msgid "By default"
 msgstr ""
 
-#: code/settings_page.php:114
+#: dos_settings_page.php:113
 msgid "Check the connection"
 msgstr ""
 
-#: code/settings_page.php:125
+#: dos_settings_page.php:124
+msgid "Migrate existing media"
+msgstr ""
+
+#: dos_settings_page.php:136
+msgid "Progress"
+msgstr ""
+
+#: dos_settings_page.php:150
+msgid "Status"
+msgstr ""
+
+#: dos_settings_page.php:156
+msgid "mediafiles can be migrated"
+msgstr ""
+
+#: dos_settings_page.php:168
+msgid "Start migration"
+msgstr ""
+
+#: dos_settings_page.php:179
 msgid "File & Path settings"
 msgstr ""
 
-#: code/settings_page.php:137
+#: dos_settings_page.php:191
 msgid "Full URL-path to files"
 msgstr ""
 
-#: code/settings_page.php:146
+#: dos_settings_page.php:200
 msgid ""
 "Enter storage public domain or subdomain if the files are stored only in the "
 "cloud storage"
 msgstr ""
 
-#: code/settings_page.php:148
+#: dos_settings_page.php:202
 msgid "or full URL path, if are kept both in cloud and on the server."
 msgstr ""
 
-#: code/settings_page.php:150
+#: dos_settings_page.php:204
 msgid ""
 "In that case duplicates are created. If you change one, you change and the "
 "other,"
 msgstr ""
 
-#: code/settings_page.php:160
+#: dos_settings_page.php:214
 msgid "Local path"
 msgstr ""
 
-#: code/settings_page.php:169
+#: dos_settings_page.php:223
 msgid "Local path to the uploaded files. By default"
 msgstr ""
 
-#: code/settings_page.php:170
+#: dos_settings_page.php:224
 msgid ""
 "Setting duplicates of the same name from the mediafiles settings. Changing "
 "one, you change and other"
 msgstr ""
 
-#: code/settings_page.php:180
+#: dos_settings_page.php:234
 msgid "Storage prefix"
 msgstr ""
 
-#: code/settings_page.php:189
+#: dos_settings_page.php:243
 msgid ""
 "The path to the file in the storage will appear as a prefix / path.<br />For "
 "example, in your case:"
 msgstr ""
 
-#: code/settings_page.php:200
+#: dos_settings_page.php:254
 msgid "Filemask/Regex for ignored files"
 msgstr ""
 
-#: code/settings_page.php:208
+#: dos_settings_page.php:263
 msgid "By default empty or"
 msgstr ""
 
-#: code/settings_page.php:209
+#: dos_settings_page.php:264
 msgid ""
 "Will upload all the files by default, you are free to use any Regular "
 "Expression to match and ignore the selection you need, for example:"
 msgstr ""
 
-#: code/settings_page.php:222
+#: dos_settings_page.php:277
 msgid "Sync settings"
 msgstr ""
 
-#: code/settings_page.php:236
+#: dos_settings_page.php:292
 msgid "Store files only in the cloud and delete after successful upload."
 msgstr ""
 
-#: code/settings_page.php:237
+#: dos_settings_page.php:293
 msgid ""
 "In that case file will be removed from your server after being uploaded to "
 "cloud storage, that saves you space."
 msgstr ""
 
-#: code/settings_page.php:250
+#: dos_settings_page.php:307
 msgid ""
 "Delete file from cloud storage as soon as it was removed from your library."
 msgstr ""
 
-#: code/settings_page.php:263
-msgid "Enable debug mode. Do not enable unless you know what it is."
-msgstr ""
-
-#. Name of the plugin
-msgid "DigitalOcean Spaces Sync"
-msgstr ""
-
-#. Description of the plugin
+#: loader.php:35
 msgid ""
-"This WordPress plugin syncs your media library with DigitalOcean Spaces "
-"Container."
+"Plugin DigitalOcean Spaces Sync Reloaded requires PHP 5.3.3 or higher. The "
+"plugin has now disabled itself."
 msgstr ""
 
-#. URI of the plugin
-msgid "https://github.com/keeross/DO-Spaces-Wordpress-Sync"
+#: loader.php:48
+msgid ""
+"Plugin DigitalOcean Spaces Sync Reloaded requires cURL 7.16.2+. The plugin "
+"has now disabled itself."
 msgstr ""
 
-#. Author of the plugin
-msgid "keeross"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://github.com/keeross"
+#: loader.php:55
+msgid ""
+"Plugin DigitalOcean Spaces Sync Reloaded requires that cURL is compiled with "
+"OpenSSL. The plugin has now disabled itself."
 msgstr ""
