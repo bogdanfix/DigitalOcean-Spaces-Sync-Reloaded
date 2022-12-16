@@ -2,8 +2,8 @@
 /**
  * Plugin Name: DigitalOcean Spaces Sync Reloaded
  * Plugin URI: https://github.com/bogdanfix/DigitalOcean-Spaces-Sync-Reloaded
- * Description: This WordPress plugin syncs your media library with DigitalOcean Spaces Container.
- * Version: 2.3.0
+ * Description: This WordPress plugin syncs your media library with DigitalOcean Spaces Container. And can sync your existing media too!
+ * Version: 1.0.0
  * Author: BogdanFix, keeross
  * Author URI: https://github.com/bogdanfix
  * License: MIT
@@ -32,7 +32,7 @@ if( is_admin() && ( ! defined('DOING_AJAX') || ! DOING_AJAX ) )
   {
     dos_incompatibile(
       __(
-        'Plugin DigitalOcean Spaces Sync requires PHP 5.3.3 or higher. The plugin has now disabled itself.',
+        'Plugin DigitalOcean Spaces Sync Reloaded requires PHP 5.3.3 or higher. The plugin has now disabled itself.',
         'dos'
       )
     );
@@ -45,14 +45,14 @@ if( is_admin() && ( ! defined('DOING_AJAX') || ! DOING_AJAX ) )
   )
   {
     dos_incompatibile(
-      __( 'Plugin DigitalOcean Spaces Sync requires cURL 7.16.2+. The plugin has now disabled itself.', 'dos' )
+      __( 'Plugin DigitalOcean Spaces Sync Reloaded requires cURL 7.16.2+. The plugin has now disabled itself.', 'dos' )
     );
   }
   elseif( !( $curl['features'] & CURL_VERSION_SSL ) )
   {
     dos_incompatibile(
       __(
-        'Plugin DigitalOcean Spaces Sync requires that cURL is compiled with OpenSSL. The plugin has now disabled itself.',
+        'Plugin DigitalOcean Spaces Sync Reloaded requires that cURL is compiled with OpenSSL. The plugin has now disabled itself.',
         'dos'
       )
     );

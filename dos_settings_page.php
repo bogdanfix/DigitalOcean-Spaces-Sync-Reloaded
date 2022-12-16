@@ -9,7 +9,7 @@
     <div class="row">
       
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h2>DigitalOcean Spaces Sync <?php _e( 'Settings', 'dos' ); ?></h2>
+        <h2>DigitalOcean Spaces Sync Reloaded <?php _e( 'Settings', 'dos' ); ?></h2>
       </div>
 
     </div>

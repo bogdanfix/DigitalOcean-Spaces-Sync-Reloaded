@@ -124,8 +124,8 @@ class DOS {
   public function register_menu()
   {
     add_options_page(
-      'DigitalOcean Spaces Sync',
-      'DigitalOcean Spaces Sync',
+      'DigitalOcean Spaces Sync Reloaded',
+      'DigitalOcean Spaces Sync Reloaded',
       'manage_options',
       'setting_page.php',
       array( $this, 'register_setting_page' )
